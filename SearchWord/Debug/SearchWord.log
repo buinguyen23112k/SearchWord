@@ -1,0 +1,4 @@
+﻿  Source.cpp
+D:\Document\English\Vocabulary\SearchWord\SearchWord\Source.cpp(43,22): warning C4018: '<': signed/unsigned mismatch
+D:\Document\English\Vocabulary\SearchWord\SearchWord\Source.cpp(55,23): warning C4018: '<': signed/unsigned mismatch
+  SearchWord.vcxproj -> D:\Document\English\Vocabulary\SearchWord\Debug\SearchWord.exe
