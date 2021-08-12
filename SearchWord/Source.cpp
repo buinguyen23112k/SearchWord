@@ -21,19 +21,29 @@ int main()
 	std::locale loc(std::locale(), new std::codecvt_utf8<wchar_t>);		// UTF-8
 	wstring wordSearching;
 
-	wstring link = L"D:/Document/English/Vocabulary/VocaText/";
-	vector<wstring> chooseNameFiles = { (L"Voca_01"),(L"Voca_02"),(L"Voca_03"),(L"Voca_04"),(L"Voca_05"),(L"Voca_06"),(L"Voca_07"),(L"Voca_08"),(L"Voca_09"),(L"Voca_10"),(L"Voca_11"),(L"Voca_12"),(L"Voca_13"),(L"Voca_14"),(L"Voca_15"),(L"[1] NewPhrase"),(L"[2] NewVoca") };
+	wstring link = L"D:/Document/English/06_Vocabulary/VocaText/";
+	vector<wstring> chooseNameFiles = { (L"[1] NewPhrase"),(L"[2] NewVoca"), (L"[8] VNU_NewSentence")};
 
+	
+	for (int k = 1; k < 36; k++) {
+		wstring temp = L"Voca_";
+		wstring number = to_wstring(k);
+		if (k < 10)
+			temp = temp + L"0" + number;
+		else
+			temp = temp + number;
+		chooseNameFiles.push_back(temp);
+	}
 	while (1) {
 		int flag = 0;
 		wcout << L"Nhập từ bạn cần tìm: ";
 		rewind(stdin);
-		wcin >> wordSearching;
+		getline(wcin, wordSearching);
 		for (int i = 0; i < chooseNameFiles.size(); i++) {
 			wstring realLink = link + chooseNameFiles[i] + L".txt";
 			wfstream fin(realLink);
-			if (!fin)
-				wcout << L"cann't open file "<<chooseNameFiles[i];
+			//if (!fin)
+				//wcout << L"cann't open file "<<chooseNameFiles[i];
 			fin.imbue(loc);
 			while (fin) {
 				wstring eachWordInFile;
@@ -48,7 +58,7 @@ int main()
 			}
 		}
 		if (!flag)
-			wcout << L"Không tìm thấy !" << endl;
+			wcout << L"Không tìm thấy!" << endl;
 		wcout << endl;
 	}
 	return 0;
